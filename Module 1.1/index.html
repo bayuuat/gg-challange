@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+      body{
+        background: #e1e1e1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container vh-100 d-flex align-items-center">
+      <div class="col-5 mx-auto"> 
+        <form onchange="validateForm()">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="text" class="form-control" id="email" aria-describedby="emailHelp" onchange="validateEmail()">
+            <div id="emailHelp" class="form-text text-danger"></div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" onkeydown="validatePassword()">
+            <div id="passwordHelp" class="form-text text-danger"></div>
+          </div>
+          <button id="submit" type="submit" class="btn btn-primary" disabled>Submit</button>
+        </form>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script>
+      let checkEmail
+      let checkPass
+
+      function validateEmail() {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const email = document.getElementById("email").value;
+        console.log(email)
+        const emailDesc = document.getElementById("emailHelp");
+        emailDesc.innerHTML = ""
+        if(email === ""){
+          emailDesc.innerHTML = "Email harus diisi"
+        }else if(!regex.test(email)){
+          emailDesc.innerHTML = "Format email salah"
+        }else{
+          checkEmail =true
+        }
+      }
+
+      function validatePassword() {
+        const password = document.getElementById("password").value;
+        const passwordHelp = document.getElementById("passwordHelp");
+        passwordHelp.innerHTML = ""
+        if(password.length < 6){
+          passwordHelp.innerHTML = "Password harus lebih dari 6 character"
+        }else{
+          checkPass =true
+        }
+      }
+
+      function validateForm() {
+        if(checkEmail && checkPass){
+          submit.removeAttribute("disabled");
+        }
+      }
+
+
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+* {
+  background-color: #000;
+}
+
+.container {
+  background-color: #121212;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+aside {
+  width: 29%;
+  float: left;
+}
+
+main {
+  width: 70%;
+  float: right;
+}/*# sourceMappingURL=style.css.map */
